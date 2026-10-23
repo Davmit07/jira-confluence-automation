@@ -1,10 +1,10 @@
 # Python Calculator
 
-A simple Python calculator project with functions for addition, subtraction, and multiplication.
+A simple Python calculator project with a `Calculator` class for addition, subtraction, multiplication, and division.
 
 ## Multiplication
 
-`multiply(first_number, second_number)` returns the product of two numbers. For example, `multiply(10, 4)` returns `40`.
+Create a `Calculator` instance and call its `multiply(first_number, second_number)` method to get the product of two numbers. For example, `Calculator().multiply(10, 4)` returns `40`.
 
 Run the example from this directory with:
 
