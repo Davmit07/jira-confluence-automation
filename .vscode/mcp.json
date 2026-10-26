@@ -3,7 +3,8 @@
     {
       "type": "promptString",
       "id": "jira-url",
-      "description": "Jira Server/Data Center base URL (HTTPS)"
+      "description": "Jira Server/Data Center base URL (HTTPS)",
+      "default": "https://jiraeu.epam.com"
     },
     {
       "type": "promptString",
