@@ -1,30 +1,10 @@
 {
-  "inputs": [
-    {
-      "type": "promptString",
-      "id": "jira-url",
-      "description": "Jira Server/Data Center base URL (HTTPS)"
-    },
-    {
-      "type": "promptString",
-      "id": "jira-personal-token",
-      "description": "Jira Server/Data Center personal access token",
-      "password": true
-    }
-  ],
+
   "servers": {
     "echo-macos": {
       "command": "pwsh",
       "args": ["-ExecutionPolicy", "Bypass", "-File", "./path/to/mcp-echo.ps1"]
-    },
-    "jira": {
-      "command": "uvx",
-      "args": ["mcp-atlassian"],
-      "env": {
-        "JIRA_URL": "${input:jira-url}",
-        "JIRA_PERSONAL_TOKEN": "${input:jira-personal-token}",
-        "READ_ONLY_MODE": "true"
-      }
+
     }
   }
 }
