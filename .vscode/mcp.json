@@ -22,9 +22,10 @@
       "command": "uvx",
       "args": ["mcp-atlassian"],
       "env": {
-        "JIRA_URL": "${input:jira-url}",
-        "JIRA_PERSONAL_TOKEN": "${input:jira-personal-token}",
-        "READ_ONLY_MODE": "true"
+        "JIRA_URL": "https://jiraeu.epam.com/",
+        "READ_ONLY_MODE": "true",
+        "JIRA_EMAIL": "amit_dixit@epam.com",
+        "JIRA_API_TOKEN": "${input:jira-personal-token}"
       }
     }
   }
