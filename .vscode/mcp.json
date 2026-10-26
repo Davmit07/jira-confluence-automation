@@ -2,13 +2,13 @@
   "inputs": [
     {
       "type": "promptString",
-      "id": "jira-username",
-      "description": "Jira username or email"
+      "id": "jira-url",
+      "description": "Jira Server/Data Center base URL (HTTPS)"
     },
     {
       "type": "promptString",
-      "id": "jira-api-token",
-      "description": "Jira API token",
+      "id": "jira-personal-token",
+      "description": "Jira Server/Data Center personal access token",
       "password": true
     }
   ],
@@ -21,9 +21,8 @@
       "command": "uvx",
       "args": ["mcp-atlassian"],
       "env": {
-        "JIRA_URL": "https://jiraeu.epam.com/",
-        "JIRA_USERNAME": "${input:jira-username}",
-        "JIRA_API_TOKEN": "${input:jira-api-token}",
+        "JIRA_URL": "${input:jira-url}",
+        "JIRA_PERSONAL_TOKEN": "${input:jira-personal-token}",
         "READ_ONLY_MODE": "true"
       }
     }
