@@ -1,15 +1,19 @@
 {
   "inputs": [
     {
-      "type": "promptString",
       "id": "jira-url",
-      "description": "Jira Server/Data Center base URL (HTTPS)",
-      "default": "https://jiraeu.epam.com"
+      "type": "promptString",
+      "description": "Jira base URL (for example, https://company.atlassian.net)"
     },
     {
+      "id": "jira-email",
       "type": "promptString",
+      "description": "Email address associated with your Jira API token"
+    },
+    {
       "id": "jira-personal-token",
-      "description": "Jira Server/Data Center personal access token",
+      "type": "promptString",
+      "description": "Jira API token",
       "password": true
     }
   ],
@@ -22,10 +26,10 @@
       "command": "uvx",
       "args": ["mcp-atlassian"],
       "env": {
-        "JIRA_URL": "https://jiraeu.epam.com/",
-        "READ_ONLY_MODE": "true",
-        "JIRA_EMAIL": "amit_dixit@epam.com",
-        "JIRA_API_TOKEN": "${input:jira-personal-token}"
+        "JIRA_URL": "${input:jira-url}",
+        "JIRA_EMAIL": "${input:jira-email}",
+        "JIRA_PERSONAL_TOKEN": "${input:jira-personal-token}",
+        "READ_ONLY_MODE": "true"
       }
     }
   }
