@@ -1,0 +1,3 @@
+- Always load `./instructions/main.agent.md` completely at the start of each prompt.
+- Use its keywords and targets to select the relevant instruction, then load that instruction completely before acting.
+- Treat `./instructions/` as the canonical, platform-agnostic source; keep Copilot-specific setup in `.github/` and `.vscode/`.

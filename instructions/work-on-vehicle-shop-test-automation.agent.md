@@ -1,0 +1,8 @@
+- Read `work/module03-task/project_spec.md` and `work/module03-task/backlog.md` before changing the Vehicle Shop test-automation work; treat them as the scope and requirements source.
+- Keep test authoring reviewable: preserve Jira traceability, create generated cases as Draft, and require a QA owner to approve them before execution.
+- Keep the initial runner on-demand and browser-UI-only; do not add API/GraphQL tests, scheduled runs, or Jira writes unless the project scope is explicitly updated.
+- Enforce the environment allowlist and production denial before browser navigation; permit booking cases only on the approved Sandbox origin.
+- Never evaluate workbook text as code or trust editable case titles/steps as security policy; dispatch only through a fixed registry of implemented automation IDs.
+- Keep credentials, tokens, customer data, and payment data out of source control, workbooks, reports, and logs; do not send Jira content to an AI provider until organizational approval is recorded.
+- Surface invalid configuration, workbook rows, external-service errors, and safety-gate failures explicitly; do not silently skip or report success-shaped fallbacks.
+- Add focused tests for changed behavior, including safety boundaries where relevant, and document user-facing workflow changes in the project documentation.
