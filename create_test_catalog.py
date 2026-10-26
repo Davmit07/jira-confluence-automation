@@ -98,7 +98,7 @@ def create_test_catalog(
         ("Case ID", "Assign a stable, unique ID and keep it unchanged when editing the case."),
         ("Jira traceability", "Enter the source issue key and its full URL for every case."),
         ("Journey / Priority", "Choose from the dropdowns so cases can be consistently filtered."),
-        ("Steps", "Enter one numbered action per line in the same cell, for example: 1. Open search; 2. Enter criteria; 3. Submit."),
+        ("Steps", "Enter one numbered action per line in the same cell, for example:\n1. Open search\n2. Enter criteria\n3. Submit"),
         ("Expected Results", "Describe observable outcomes for the case; use numbered lines when they correspond to steps."),
         ("Test Data Reference", "Use a safe named reference to test data; never put passwords, tokens, or real customer/payment data here."),
         ("Review Status", "New cases remain Draft until reviewed. Only QA-approved cases may be executed."),

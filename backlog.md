@@ -25,8 +25,8 @@ Priorities put environment isolation, production blocking, booking restrictions,
 ## Core Features
 
 - [ ] Define and version the Excel catalog schema for case ID, Jira issue key/link, journey, title, priority, preconditions, numbered steps, expected results, test-data reference, review status, reviewer, review date, automation status/ID, and last result.
-- [ ] Add catalog validation for required fields, unique case IDs, valid Jira keys/links, supported journey/status values, and well-formed numbered steps; report row and column for invalid entries.
-- [ ] Preserve the existing blank workbook template and provide a documented way to generate or update it without overwriting user data unless explicitly requested.
+- [x] Add catalog validation for required fields, unique case IDs, valid Jira keys/links, supported journey/status values, and well-formed numbered steps; report row and column for invalid entries.
+- [x] Preserve the existing blank workbook template and provide a documented way to generate or update it without overwriting user data unless explicitly requested.
 - [ ] Implement review-state transitions for Draft, Needs Update, Approved, and Rejected; retain reviewer and review date and prevent unreviewed generated content from becoming approved automatically.
 - [ ] Define a fixed registry mapping automation IDs to implemented test functions; never evaluate spreadsheet text or dynamically import arbitrary workbook-provided code.
 - [ ] Create an on-demand command-line interface to select a workbook, one or more case IDs, and an environment.
@@ -85,7 +85,7 @@ Priorities put environment isolation, production blocking, booking restrictions,
 - [ ] Provide a safe configuration example containing placeholder URLs only; document how to supply secrets locally without committing them.
 - [ ] Document Jira project/filter setup, read-only permissions, required story fields, and the proposed pilot JQL for owner validation.
 - [ ] Document the catalog columns, dropdown values, case-ID conventions, numbered-step format, Jira traceability, review states, and approval responsibilities.
-- [ ] Document how to generate the workbook template and how to avoid overwriting a populated catalog.
+- [x] Document how to generate the workbook template and how to avoid overwriting a populated catalog.
 - [ ] Document how to add an automation ID safely through the fixed registry and how the runner blocks arbitrary workbook text.
 - [ ] Document the on-demand run command, environment selection, confirmation prompt, supported case states, and expected output files.
 - [ ] Publish a clear safety guide explaining allowlisted origins, production blocking, redirect checks, Sandbox-only booking, synthetic test data, and stop conditions.
