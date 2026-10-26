@@ -14,6 +14,52 @@ python3 main.py
 
 ## Vehicle Shop test-case catalog
 
+### Versioned schema and Jira-key starter rows
+
+From the workspace root:
+
+```sh
+python3 -m pip install -r work/module03-task/requirements.txt
+python3 tools/define-corepy EPMCDMETST-123 EPMCDMETST-456 \
+  --output catalog-schema-v1.0.0.xlsx
+```
+
+The filename `define-corepy` is intentional; invoke it with Python 3. It accepts
+one or more distinct uppercase Jira keys from one project (up to 1,000).
+The default Jira host is `https://jiraeu.epam.com`; override it using
+`--jira-base-url https://jira.example`. No Jira requests are made, so supplied
+keys are not verified as existing issues. A project URL may also be supplied.
+Output defaults to `catalog-schema-v1.0.0.xlsx` in the current directory.
+Existing workbooks are protected unless `--force` is explicitly supplied.
+Writes are staged before atomic publication.
+
+The workbook includes the existing formatted `Test Cases` and `Read Me` sheets
+plus a `Schema` sheet recording version **1.0.0**, all 16 exact column names,
+types, required/conditional fields, allowed values, initial states, and rules.
+The shared Python contract lives in `catalog_schema.py`; the existing template
+generator and validator use it too. New templates record the version in
+`Read Me`. Existing workbooks are not migrated or overwritten.
+
+Each supplied key gets a stable initial `<ISSUE-KEY>-TC-001` case ID, canonical
+Jira browse link, and **Draft / Not Mapped / Not Run** states. Journey, Title,
+Priority, Preconditions, Steps, and Expected Results are deliberately blank;
+these are incomplete authoring rows, **not valid or runnable test cases** until
+QA supplies the required content. No acceptance criteria or story details are
+invented. Assign another unique case ID when adding more cases for a story.
+
+Schema maintenance: bump the major version for incompatible field/rule changes,
+minor for compatible additions, and patch for documentation corrections that do
+not change accepted data. Update the shared contract, validator, tests, and
+documentation together; the version label alone does not migrate old workbooks
+or verify compatibility. The validator continues to accept legacy unversioned
+workbooks matching the current field/rule contract.
+
+Run the schema CLI tests from `work/module03-task`:
+
+```sh
+python3 -m unittest discover -s tests -p 'test_define_catalog_schema.py' -v
+```
+
 Install the workbook dependency and generate a blank, Jira-traceable test-case catalog:
 
 ```sh
@@ -144,3 +190,24 @@ an explicit error before any simulated navigation. Redirects are supplied as tes
 data and checked in advance, not discovered through real browser navigation.
 This standalone training example does not implement the Vehicle Shop runner or
 prove that an external application's browser/payment integration is safe.
+
+### Additional environment safety unit tests
+
+From the workspace root, run:
+
+```sh
+python3 tools/add-unit-test-cases.py -v
+```
+
+This standalone `unittest` script tests the existing offline candy Sandbox
+implementation: URL parsing, exact scheme/host/port allowlisting, production
+target rejection, redirect chains, and missing or malformed configuration.
+Denied purchase attempts must raise `SandboxDenied` with an actionable reason
+and leave the fake browser's navigation history empty. It creates no files and
+makes no network requests. Run the existing `test_candy_sandbox.py` suite above
+as well for the workbook-edit and automation-ID safety cases.
+
+Production targets are rejected by the simulation's fixed Sandbox allowlist;
+these tests do not prove an independent production-denial policy for a
+configurable Vehicle Shop runner. That runner and its environment configuration
+remain backlog work.

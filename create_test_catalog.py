@@ -7,34 +7,11 @@ from openpyxl.styles import Alignment, Font, PatternFill
 from openpyxl.worksheet.datavalidation import DataValidation
 from openpyxl.utils import get_column_letter
 
+from catalog_schema import HEADERS, LISTS, SCHEMA_VERSION
+
 
 DEFAULT_OUTPUT = Path("test-cases-template.xlsx")
 MAX_CASE_ROWS = 1000
-HEADERS = [
-    "Case ID",
-    "Jira Issue Key",
-    "Jira Issue Link",
-    "Journey",
-    "Title",
-    "Priority",
-    "Preconditions",
-    "Steps",
-    "Expected Results",
-    "Test Data Reference",
-    "Review Status",
-    "Reviewer",
-    "Review Date",
-    "Automation Status",
-    "Automation ID",
-    "Last Result",
-]
-LISTS = {
-    "Journey": ["Search", "Compare", "Configure", "Booking"],
-    "Priority": ["Critical", "High", "Medium", "Low"],
-    "Review Status": ["Draft", "Needs Update", "Approved", "Rejected"],
-    "Automation Status": ["Not Mapped", "Planned", "Implemented", "Retired"],
-    "Last Result": ["Not Run", "Passed", "Failed", "Skipped"],
-}
 COLUMN_WIDTHS = [18, 20, 40, 16, 36, 18, 40, 55, 45, 30, 20, 24, 16, 22, 30, 16]
 
 
@@ -95,6 +72,7 @@ def create_test_catalog(
     instructions.column_dimensions["B"].width = 110
     guidance = [
         ("Test Case Catalog", "Use one row per test case on the Test Cases sheet."),
+        ("Schema Version", SCHEMA_VERSION),
         ("Case ID", "Assign a stable, unique ID and keep it unchanged when editing the case."),
         ("Jira traceability", "Enter the source issue key and its full URL for every case."),
         ("Journey / Priority", "Choose from the dropdowns so cases can be consistently filtered."),

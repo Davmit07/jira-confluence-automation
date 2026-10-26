@@ -13,14 +13,7 @@ from zipfile import BadZipFile
 from openpyxl import load_workbook
 from openpyxl.utils.exceptions import InvalidFileException
 
-from create_test_catalog import HEADERS, LISTS
-
-
-REQUIRED_FIELDS = (
-    "Case ID", "Jira Issue Key", "Jira Issue Link", "Journey", "Title",
-    "Priority", "Preconditions", "Steps", "Expected Results",
-    "Review Status", "Automation Status", "Last Result",
-)
+from catalog_schema import HEADERS, LISTS, REQUIRED_FIELDS
 
 
 class ValidationError(TypedDict):

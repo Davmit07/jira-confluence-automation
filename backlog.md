@@ -24,7 +24,7 @@ Priorities put environment isolation, production blocking, booking restrictions,
 
 ## Core Features
 
-- [ ] Define and version the Excel catalog schema for case ID, Jira issue key/link, journey, title, priority, preconditions, numbered steps, expected results, test-data reference, review status, reviewer, review date, automation status/ID, and last result.
+- [x] Define and version the Excel catalog schema for case ID, Jira issue key/link, journey, title, priority, preconditions, numbered steps, expected results, test-data reference, review status, reviewer, review date, automation status/ID, and last result.
 - [x] Add catalog validation for required fields, unique case IDs, valid Jira keys/links, supported journey/status values, and well-formed numbered steps; report row and column for invalid entries.
 - [x] Preserve the existing blank workbook template and provide a documented way to generate or update it without overwriting user data unless explicitly requested.
 - [ ] Implement review-state transitions for Draft, Needs Update, Approved, and Rejected; retain reviewer and review date and prevent unreviewed generated content from becoming approved automatically.
