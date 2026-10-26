@@ -27,3 +27,22 @@ workbook. The workbook includes the required case and Jira fields, review and
 journey/priority/automation status dropdowns, reviewer and review-date fields,
 and a Read Me sheet. Keep generated cases in Draft until a QA owner reviews and
 approves them; workbook content is not executable.
+
+## Offline candy-shop Sandbox example
+
+Run a simulated purchase of one candy, without real payments, orders, or network
+requests:
+
+```sh
+python3 candy_sandbox.py
+python3 -m unittest discover -s tests -p 'test_candy_sandbox.py'
+```
+
+The example uses the reserved synthetic origin `https://sandbox.candy.example`
+and a fake browser that only records destinations. Purchases require the Sandbox
+environment and a fixed automation ID; editable titles and steps are never
+executed. Invalid configuration, non-Sandbox origins, and unsafe redirects raise
+an explicit error before any simulated navigation. Redirects are supplied as test
+data and checked in advance, not discovered through real browser navigation.
+This standalone training example does not implement the Vehicle Shop runner or
+prove that an external application's browser/payment integration is safe.
