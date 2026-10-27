@@ -4,7 +4,8 @@ Priorities put environment isolation, production blocking, booking restrictions,
 
 ## Setup
 
-- [ ] Confirm the pilot environments and obtain the canonical base URL for each selected environment from the application owner. #1 (Github Coding Agent Module 19)
+- [ ] **Proposed initial pilot environment: Staging, pending application/environment-owner approval.** Obtain and record its exact canonical base origin; none has been supplied. No browser execution is authorized until origin and safety policy are approved. #1 (Github Coding Agent Module 19)
+- [ ] Record the authorized owner and reviewed approval/distribution process for environment policy changes; requester-proposed ownership is not yet verified.
 - [ ] Establish a controlled configuration mechanism for environment names and base URLs; keep credentials in local environment variables or an approved secret manager. #2
 - [ ] Implement exact-origin URL allowlisting, including scheme, hostname, and permitted port; reject malformed URLs, redirects to unapproved origins, and URLs not explicitly configured. #3
 - [ ] Add a hard production-target denial independent of the allowlist, and verify the denial is applied before browser navigation.
@@ -12,7 +13,9 @@ Priorities put environment isolation, production blocking, booking restrictions,
 - [ ] Record the configured Sandbox origin and obtain application-owner confirmation that it is non-production and safe for booking tests.
 - [ ] Obtain dedicated test accounts and document authentication/login steps without storing passwords in source control, workbooks, reports, or logs.
 - [ ] Define named synthetic test data and repeatable setup, cleanup, and reset procedures; prohibit real customer, payment, or production booking data.
-- [ ] Decide the first pilot scope (recommended: Sandbox search and comparison only); explicitly exclude booking until safe Sandbox behavior is confirmed.
+- [ ] **Proposed pilot scope, pending product-owner and QA-lead sign-off:** only search and comparison cases may be authored, reviewed, approved, mapped, and executed; defer configuration and booking from every pilot lifecycle stage. The pilot environment remains undecided pending owner approval.
+- [ ] Record that this Vehicle Shop feature is part of the broader Jira/Confluence automation project, while Confluence access remains disabled and out of scope for this release unless separately approved.
+- [ ] Name the pilot acceptance authority (QA lead with product and environment owners) and approve the evidence package (test results, safety checklist, known limitations, and recorded go/no-go sign-off).
 - [ ] Confirm Jira Cloud base URL, project key `PROJECTCARS`, account read permissions, issue types, and the Jira account/token setup process.
 - [ ] Validate a read-only pilot JQL filter with the project owner; suggested starting filter: `project = PROJECTCARS AND issuetype = Story AND statusCategory != Done ORDER BY priority DESC, updated DESC`.
 - [ ] Select an organization-approved AI provider and obtain explicit approval for sending the minimum required Jira story content; keep AI integration disabled until approval.
@@ -29,10 +32,10 @@ Priorities put environment isolation, production blocking, booking restrictions,
 - [x] Preserve the existing blank workbook template and provide a documented way to generate or update it without overwriting user data unless explicitly requested.
 - [ ] Implement review-state transitions for Draft, Needs Update, Approved, and Rejected; retain reviewer and review date and prevent unreviewed generated content from becoming approved automatically.
 - [ ] Define a fixed registry mapping automation IDs to implemented test functions; never evaluate spreadsheet text or dynamically import arbitrary workbook-provided code.
-- [ ] Create an on-demand command-line interface to select a workbook, one or more case IDs, and an environment.
+- [ ] Implement the on-demand React/Express team workflow to select eligible case IDs and an environment, display the exact selection, and request explicit confirmation before delegating to the separately governed Python runner.
 - [ ] Require an explicit confirmation that displays the selected environment and cases before starting a browser run.
 - [ ] Validate every selected case before launch; refuse Draft, Needs Update, Rejected, unmapped, non-implemented, malformed, or duplicate case entries with actionable errors.
-- [ ] Enforce the environment allowlist and production denial immediately before browser launch/navigation, not only during CLI argument parsing.
+- [ ] Enforce the environment allowlist and production denial immediately before browser launch/navigation, not only during request validation.
 - [ ] Enforce the Sandbox-only booking restriction from trusted case metadata/automation mapping; do not rely on editable case steps or title text to identify bookings.
 - [ ] Configure Playwright for desktop Chrome and implement a maintainable page-object/component structure using stable, application-approved selectors.
 - [ ] Implement the first small approved search and comparison scenarios only after URLs, accounts, test data, and environment gates are configured.
@@ -42,7 +45,7 @@ Priorities put environment isolation, production blocking, booking restrictions,
 - [ ] Produce a machine-readable run result and concise human-readable summary in the approved output location; do not write artifacts to an unapproved or shared location.
 - [ ] Keep Jira integration read-only: fetch story descriptions/acceptance criteria and links; do not create/update Jira issues in this release.
 - [ ] Add a provider-neutral drafting interface with a disabled/unconfigured state; only enable it after provider and data-sharing approval.
-- [ ] Generate reviewable positive, validation, and failure-path draft scenarios for the four journeys while preserving issue key/link and setting every generated case to Draft.
+- [ ] During the initial pilot, generate or manually author reviewable positive, validation, and failure-path Draft scenarios only for search and comparison; configuration and booking remain unavailable for authoring, review, approval, mapping, and execution until a later scope decision.
 - [ ] Send only the minimum approved Jira content to the selected AI provider; exclude secrets, customer data, payment data, and unrelated issue fields.
 - [ ] Support selection of Jira stories by issue keys or the approved user-supplied JQL filter and provide clear errors for permission failures or missing acceptance criteria.
 - [ ] Add configuration and booking automation only after the pilot is accepted; constrain all booking execution to Sandbox.

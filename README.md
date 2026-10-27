@@ -2,6 +2,28 @@
 
 A simple Python calculator project with a `Calculator` class for addition, subtraction, multiplication, and division.
 
+## Local PostgreSQL 15
+
+The development database runs only on the local machine at `127.0.0.1:5432`.
+Before the first start, create a local-only password file (it is ignored by Git):
+
+```sh
+mkdir -p -m 700 .local
+openssl rand -hex 32 > .local/postgres_password
+chmod 600 .local/postgres_password
+docker compose up -d --wait
+```
+
+Verify database access with a SQL query:
+
+```sh
+docker compose exec -T database psql -U vehicle_shop -d vehicle_shop -tAc 'SELECT 1'
+```
+
+The expected query result is `1`. Stop the service with `docker compose down`;
+the named development volume is preserved. To remove the development database
+and its data, use `docker compose down --volumes`.
+
 ## Multiplication
 
 Create a `Calculator` instance and call its `multiply(first_number, second_number)` method to get the product of two numbers. For example, `Calculator().multiply(10, 4)` returns `40`.

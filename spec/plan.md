@@ -27,6 +27,8 @@ Resolve these in Phase 0 before building the dependent capabilities:
 
 If any gate remains unresolved, continue only with independent scaffolding, contracts, and isolated tests that do not encode the unresolved policy. Keep the affected integration or workflow disabled.
 
+**Current environment-gate status**: Staging is proposed as the initial pilot environment, but its canonical origin and owner approval are missing. Production-denial criteria are in progress but lack a documented trusted source; the policy-change authority, browser enforcement boundary, and non-production Sandbox confirmation are also pending. Do not enable browser execution or booking.
+
 ## Phase 0 — Product Decisions and Delivery Baseline
 
 **Objective**: Convert open questions into approved decisions and establish acceptance evidence before feature implementation.
@@ -35,12 +37,13 @@ If any gate remains unresolved, continue only with independent scaffolding, cont
 
 ### M0.1 — Scope and release boundaries approved
 
-- Confirm this feature's relationship to the broader Jira/Confluence product.
-- Confirm initial pilot journeys (recommended: vehicle search and comparison) and which journeys may be drafted versus executed.
-- Confirm initial supported environments and define pilot sign-off authority, exit criteria, and required evidence.
-- Record Confluence as out of scope and disabled for this release unless separate requirements are approved.
+- Proposed decision: this Vehicle Shop Jira test-automation feature belongs to the broader Jira/Confluence automation project; Confluence access is disabled and out of scope for this release unless separately approved.
+- Proposed initial-pilot boundary: only vehicle search and comparison may be authored, reviewed, approved, mapped, and executed; configuration and booking are deferred from all pilot lifecycle stages.
+- Staging is the proposed pilot environment, but keep it unauthorized and the pilot environment unresolved until the application/environment owner approves its canonical origin.
+- Proposed pilot acceptance authority: QA lead together with product and environment owners. Required evidence: test results, safety checklist, known limitations, and recorded go/no-go sign-off.
+- Record these as proposed decisions pending product-owner and QA-lead sign-off; do not treat them as approvals or enable gated behavior before approval.
 
-**Exit criteria**: Product owner and QA lead approve release boundaries; the spec and backlog no longer imply conflicting pilot capabilities.
+**Exit criteria**: Product owner and QA lead approve the recorded release boundaries; the evidence package and sign-off requirements are identified; the specification and backlog no longer imply conflicting pilot capabilities.
 
 ### M0.2 — Policy and operational decisions recorded
 

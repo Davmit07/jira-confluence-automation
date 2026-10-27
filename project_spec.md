@@ -4,25 +4,28 @@
 
 Provide a reviewable workflow for turning Jira stories into test cases, maintaining an Excel test catalog, running approved browser tests on demand, and reporting results and Jira traceability for the Vehicle Shop project.
 
-## 2. Users and Confirmed Scope
+## 2. Users and Scope (Pilot Boundary Proposed; Approval Pending)
 
 - Primary user: QA lead managing a team of 10.
 - Test authoring input: Jira stories and their acceptance criteria.
 - Test surface: browser UI only; GraphQL/API testing is not in scope.
-- Product journeys: search vehicles, compare vehicles, configure vehicles, and bookings.
+- Product boundary: this Vehicle Shop Jira test-automation feature belongs to the broader Jira/Confluence automation project; it does not define a complete Confluence feature. Confluence access is disabled and out of scope for this release unless separately approved.
+- Product journeys across the roadmap: search vehicles, compare vehicles, configure vehicles, and bookings.
+- Proposed initial-pilot boundary: only search and comparison cases may be authored, reviewed, approved, mapped, and executed. Configuration and booking are deferred from all pilot lifecycle stages and require a later scope decision; booking additionally requires separate Sandbox safety approval.
 - Target browser: desktop Chrome with internet access.
-- Test environments: Staging, Sandbox, QA, and PreProd; bookings must use Sandbox only.
+- Candidate test environments: Staging, Sandbox, QA, and PreProd. Staging is the proposed initial pilot environment pending application/environment-owner approval; no valid canonical origin has been supplied. Production-denial criteria, URL/browser enforcement boundary, and the owner-confirmed non-production Sandbox origin remain unresolved. No browser execution or booking is authorized until the applicable policy and environment approvals are recorded. Bookings must use Sandbox only.
 - Test case catalog: Excel workbook (`.xlsx`), using a template defined by the solution.
 - Run mode: on demand; no scheduled or automatic CI runs in the initial scope.
 - Generation and execution results require Jira traceability.
 - Test cases are drafts until a QA owner reviews and approves them.
 - Required run outputs: pass/fail results and a summary.
 - Existing test-management and automation tools: none specified.
+- Proposed pilot acceptance authority: QA lead together with product and environment owners. Proposed evidence: test results, safety checklist, known limitations, and a recorded go/no-go sign-off. Product-owner and QA-lead approval remains pending; no pilot environment selection is made here.
 
 ## 3. Proposed Workflow
 
 1. Select Jira stories by project, filter, or issue key.
-2. Read story descriptions and acceptance criteria; generate candidate cases with an AI provider selected during implementation.
+2. Read story descriptions and acceptance criteria; during the initial pilot, create candidate cases only for vehicle search and comparison. AI use remains subject to separate provider and data-sharing approval.
 3. Save candidates to the Excel catalog with their Jira issue links and draft status.
 4. A QA owner reviews, edits, and approves cases. Only approved cases with an automation mapping can run.
 5. A user selects approved cases and an allowed environment, then starts a run on demand.
@@ -32,7 +35,7 @@ Provide a reviewable workflow for turning Jira stories into test cases, maintain
 ## 4. Functional Requirements
 
 - **FR-1 Story selection:** Retrieve Jira stories and acceptance criteria using a configured project and user-selected filter or issue keys.
-- **FR-2 Draft generation:** Produce candidate scenarios covering positive paths, relevant validation, and failure paths for the four confirmed journeys. Generated content must retain its source Jira issue key and must not be treated as approved automatically.
+- **FR-2 Draft generation:** Produce candidate scenarios covering positive paths, relevant validation, and failure paths for journeys enabled in the active release phase. During the initial pilot, authoring is limited to search and comparison; configuration and booking are deferred from all pilot lifecycle stages. Generated content must retain its source Jira issue key and must not be treated as approved automatically.
 - **FR-3 Human review:** Support draft, approved, rejected, and needs-update states, plus reviewer and review date.
 - **FR-4 Excel catalog:** Store one test case per row. Include: case ID, Jira issue key/link, journey, title, priority, preconditions, numbered steps, expected results, test-data reference, review status, reviewer, automation status, automation ID, and last result.
 - **FR-5 Browser automation:** Use a maintainable page-object/component model and stable UI selectors. Execute only approved cases that have an implemented automation ID; do not attempt to interpret arbitrary spreadsheet text as executable code.
@@ -57,7 +60,7 @@ Provide a reviewable workflow for turning Jira stories into test cases, maintain
 - **Jira integration:** Jira Cloud REST API, read-only for story retrieval and traceability by default.
 - **AI integration:** Provider-neutral adapter for drafting test cases. Select an approved provider and confirm data-handling rules before implementation; send only the minimum story content required.
 - **Configuration:** Local environment variables or a secret manager. Never commit API tokens or credentials.
-- **Execution interface:** Start with a command-line interface for selecting the workbook, cases, and environment; consider a team UI only if needed after a pilot.
+- **Execution interface:** Use the approved React 18/Vite team interface through the Node.js/Express API for catalog and run workflows; preserve the separately governed Python/pytest/Playwright runner. Do not treat the earlier CLI-first recommendation as the release architecture.
 - **Reporting:** Generate a machine-readable result file and a concise Markdown/HTML summary; exact destination remains to be confirmed.
 
 ## 7. Non-Functional Requirements
@@ -93,6 +96,6 @@ Provide a reviewable workflow for turning Jira stories into test cases, maintain
 ## 10. Delivery Phases
 
 - **Phase 1 - Foundation:** Confirm open questions, define the workbook, environment allowlist, Jira access, and approved AI provider.
-- **Phase 2 - Pilot:** Generate and review cases for vehicle search and comparison; automate a small set of approved cases in Sandbox.
+- **Phase 2 - Pilot:** Author, review, approve, map, and execute only vehicle search and comparison cases. The pilot environment is not selected by this scope decision and requires owner approval.
 - **Phase 3 - Expand:** Add configuration and sandbox booking flows, broaden coverage, and validate reporting with the full QA team.
-- **Phase 4 - Adopt:** Review quality and team feedback before considering shared UI, CI triggers, additional browsers, or automated Jira bug creation.
+- **Phase 4 - Adopt:** Review quality and team feedback before considering CI triggers, additional browsers, or automated Jira bug creation. The React/Express team interface is part of the approved application baseline, not a post-pilot option.

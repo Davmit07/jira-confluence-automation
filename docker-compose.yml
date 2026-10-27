@@ -1,0 +1,26 @@
+services:
+  database:
+    image: postgres:15
+    environment:
+      POSTGRES_DB: vehicle_shop
+      POSTGRES_USER: vehicle_shop
+      POSTGRES_PASSWORD_FILE: /run/secrets/postgres_password
+    ports:
+      - "127.0.0.1:5432:5432"
+    secrets:
+      - postgres_password
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U vehicle_shop -d vehicle_shop"]
+      interval: 5s
+      timeout: 3s
+      retries: 10
+      start_period: 5s
+
+secrets:
+  postgres_password:
+    file: ./.local/postgres_password
+
+volumes:
+  postgres_data:

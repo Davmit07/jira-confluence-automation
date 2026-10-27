@@ -14,11 +14,21 @@ Provide a reviewable workflow for selecting Jira stories, maintaining traceable 
 
 The application will provide a team interface and backend while preserving the separately governed Python/pytest/Playwright browser runner. The Excel workbook remains a required catalog format. The relationship between the workbook and persistent application records requires confirmation (see Assumptions).
 
+## Product and Pilot Boundary — Proposed, Pending Owner Sign-Off
+
+- This Vehicle Shop Jira test-automation feature is part of the broader Jira/Confluence automation project; it is not a complete Confluence feature.
+- Confluence access is disabled and out of scope for this release unless separate requirements and approval are accepted.
+- During the initial pilot, only vehicle search and comparison cases may be authored, reviewed, approved, mapped, and executed.
+- Configuration and booking cases are deferred from all pilot lifecycle stages. They require a later, separately approved scope; booking also requires its dedicated Sandbox safety approval.
+- Pilot acceptance authority is the QA lead together with the product and environment owners. The evidence package contains test results, a safety checklist, known limitations, and a recorded go/no-go sign-off.
+- These decisions are a proposed record, not stakeholder approval. Product-owner and QA-lead sign-off remains outstanding. Staging is a proposed pilot selection only; no environment origin is implied or approved.
+- Staging is now the proposed initial pilot environment, pending application/environment-owner approval. No valid canonical origin was provided; the independent production-denial policy is in progress, while its trusted source and objective criteria remain unresolved. URL/browser enforcement details and the approved non-production Sandbox origin are also pending. This proposal authorizes no browser execution and does not enable booking.
+
 ## User Scenarios & Testing
 
 ### User Story 1 - Select Jira stories and create traceable drafts (Priority: P1)
 
-As a QA author, I want to select eligible Jira stories by issue key or an approved JQL filter and create candidate test cases, so that each candidate is linked to its source requirements.
+As a QA author, I want to select eligible Jira stories by issue key or an approved JQL filter and create candidate test cases for journeys enabled in the current release phase, so that each candidate is linked to its source requirements.
 
 **Why this priority**: Jira stories and acceptance criteria are the source material for the team's test cases. Traceability must exist from the start of the workflow.
 
@@ -86,6 +96,8 @@ As a QA team member, I want to run a small set of approved vehicle search and co
 
 **Why this priority**: Search and comparison are the recommended initial pilot scope; they provide value without enabling booking prematurely.
 
+**Pilot boundary**: Search and comparison are the only journeys available for authoring, review, approval, mapping, and execution during the initial pilot. Configuration and booking are deferred from all pilot lifecycle stages.
+
 **Independent Test**: Against a non-production fixture or explicitly approved Sandbox, run a small approved search/comparison set with repeatable setup and cleanup, then inspect the run summary and Jira traceability.
 
 **Acceptance Scenarios**:
@@ -129,7 +141,7 @@ As an authorized QA lead, I want configuration and booking journeys added only a
 - **FR-001**: System MUST let an authorized user select Jira stories by issue key or an approved user-supplied JQL filter constrained to configured project and permitted issue types.
 - **FR-002**: System MUST retrieve only approved Jira fields, preserve canonical issue keys and browse links, handle pagination, and report permission, rate-limit, network, empty-result, and missing-acceptance-criteria conditions explicitly.
 - **FR-003**: System MUST keep Jira and Confluence integrations read-only by default and MUST NOT create or update remote issues, pages, comments, or attachments in this release.
-- **FR-004**: System MUST support drafting positive, validation, and failure-path test scenarios for vehicle search, comparison, configuration, and booking, preserving source Jira traceability.
+- **FR-004**: System MUST support drafting positive, validation, and failure-path test scenarios for journeys approved for the active release phase, preserving source Jira traceability. During the initial pilot, only vehicle search and comparison are enabled for authoring, review, approval, mapping, and execution; configuration and booking are deferred pending separate scope approval.
 - **FR-005**: System MUST keep AI drafting disabled until the provider and Jira-content sharing have recorded organizational approval; it MUST send only the minimum approved content.
 - **FR-006**: System MUST validate AI output against a strict structured schema and reject incomplete or malformed results rather than saving success-shaped cases.
 - **FR-007**: System MUST represent each test case with case ID, Jira issue key/link, journey, title, priority, preconditions, numbered steps, expected results, test-data reference, review status, reviewer, review date, automation status, automation ID, and last result.
@@ -197,13 +209,13 @@ As an authorized QA lead, I want configuration and booking journeys added only a
 
 ## Assumptions
 
-- The primary users are a QA lead and a team of 10 QA members; the initial pilot focuses on vehicle search and comparison.
+- The primary users are a QA lead and a team of 10 QA members. **Proposed pending product-owner and QA-lead sign-off:** the initial pilot enables vehicle search and comparison only for authoring, review, approval, mapping, and execution; configuration and booking are deferred from all pilot lifecycle stages.
 - Story selection is limited to the configured Jira Cloud project and owner-approved issue types/fields. The backlog proposes project key `PROJECTCARS` and a starting JQL, but owner confirmation is still required.
 - The application uses PostgreSQL 15 for persistent records because that is mandated by the project constitution. Excel remains an import/export format; **whether Excel or PostgreSQL is the authoritative shared catalog requires confirmation**.
 - The initial runner is on-demand and browser-UI-only. The React interface may coordinate the workflow but must not weaken runner-side safety checks.
 - AI-assisted case drafting is unavailable until an approved provider and data-sharing policy are confirmed. Manual case authoring/editing remains possible.
-- Confluence automation is not defined by the source Vehicle Shop specification. Confluence features are therefore excluded from this feature's functional scope until separate requirements and permissions are approved.
-- **[NEEDS CLARIFICATION: Environment owners must supply canonical base URLs and confirm which of Staging, Sandbox, QA, and PreProd are in the pilot.]**
+- This feature is a Jira-focused capability within the broader Jira/Confluence automation project. Confluence access is disabled and out of scope for this release until separate requirements and permissions are approved.
+- **[PROPOSED, PENDING APPLICATION/ENVIRONMENT-OWNER APPROVAL: Staging is the initial pilot environment. Its exact canonical base origin has not been supplied or approved. The production-denial policy is in progress, but its trusted source and objective criteria remain unresolved; URL normalization and browser enforcement boundary are pending. The owner-confirmed non-production Sandbox origin is also not supplied. No browser execution or booking is authorized by this proposal.]**
 - **[NEEDS CLARIFICATION: Confirm the Jira base URL, project key, read permissions, permitted issue types/fields, and approved JQL filter.]**
 - **[NEEDS CLARIFICATION: Identify the approved AI provider and approve or prohibit sending the minimum required Jira story content.]**
 - **[NEEDS CLARIFICATION: Define application authentication/authorization, authorized reviewers and run initiators, and how reviewer identity is verified.]**
@@ -212,4 +224,4 @@ As an authorized QA lead, I want configuration and booking journeys added only a
 - **[NEEDS CLARIFICATION: Confirm dedicated test-account provisioning, login steps, synthetic data setup/reset/cleanup, and exactly which Sandbox booking/payment behaviors are safe.]**
 - **[NEEDS CLARIFICATION: Confirm supported desktop Chrome version and operating systems for the pilot.]**
 - **[NEEDS CLARIFICATION: Define the objective production-target denial criteria in addition to the allowlist, and confirm the owner-approved Sandbox origin is non-production.]**
-- **[NEEDS CLARIFICATION: Define pilot exit/acceptance authority and required evidence before enabling configuration and booking automation.]**
+- **[PROPOSED, PENDING OWNER SIGN-OFF: Pilot acceptance authority is the QA lead together with product and environment owners. Required evidence is a package containing test results, a safety checklist, known limitations, and a recorded go/no-go sign-off. Configuration and booking require a separate post-pilot scope decision; booking also requires its own safety approval.]**

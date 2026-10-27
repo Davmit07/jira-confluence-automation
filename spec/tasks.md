@@ -20,6 +20,7 @@
 **Depends on**: None  
 **Gate**: Product owner and QA lead decisions  
 **References**: C-06, T-01, T-03, T-04
+**Current status**: Proposed scope and acceptance evidence are recorded in [specification.md](./specification.md), [plan.md](./plan.md), and [clarify.md](./clarify.md); product-owner and QA-lead sign-off is still pending. Do not treat this task as approved or complete until that sign-off is recorded.
 
 **Acceptance criteria**
 - [ ] Record whether this is a Vehicle Shop Jira feature within a broader Jira/Confluence product or a separately scoped product.
@@ -33,6 +34,8 @@
 **Depends on**: T0.1  
 **Gate**: Application/environment owner approval  
 **References**: C-04, C-05, C-21
+
+**Current status**: Staging is the proposed pilot environment, pending owner approval. No valid canonical origin was supplied; the production-denial source/criteria, authority for policy changes, browser enforcement boundary, and owner-confirmed non-production Sandbox origin remain unresolved. This task is not complete, and no browser execution or booking is authorized.
 
 **Acceptance criteria**
 - [ ] Record each pilot environment name and its owner-confirmed canonical base origin.

@@ -61,6 +61,14 @@ The supported names are listed as Staging, Sandbox, QA, and PreProd, but the bac
 - How are URL normalization, default/explicit ports, case, trailing dots, IPv6, IDNs, user-info, paths, and DNS changes treated?
 - Are only origins checked, or are allowed path prefixes also constrained?
 
+**Partial response (pending application/environment-owner approval)**:
+- Staging is proposed as the initial pilot environment. The response did not provide a valid canonical origin; the supplied value `2` is not recorded as an origin.
+- The requester proposed themselves as the policy-change owner, but their authority and the approval/distribution process have not been verified.
+- The independent production-denial policy is in progress; its trusted source and objective criteria remain unresolved.
+- URL normalization and the browser enforcement boundary remain pending.
+- No exact Sandbox origin or owner confirmation of its non-production status was provided. Booking remains disabled.
+- No browser execution is authorized until the owner-approved origin and safety policy are recorded.
+
 ### C-05. Booking behavior in mixed-environment runs
 
 **References**: User Story 3, acceptance scenario 5; User Story 6; FR-013, FR-018.
@@ -265,6 +273,8 @@ The requested product is described as Jira/Confluence automation, but this featu
 
 **Resolve by**: State whether this is one Jira-focused feature within a broader Jira/Confluence product, or rename/scope the feature to Vehicle Shop Jira test automation.
 
+**Proposed resolution (pending product-owner and QA-lead sign-off)**: Treat this as a Vehicle Shop Jira test-automation feature within the broader Jira/Confluence project. Confluence access remains disabled and out of scope for this release.
+
 ### T-02. General environment selection versus booking's Sandbox-only rule
 
 **References**: User Story 3; FR-013, FR-018.
@@ -281,6 +291,8 @@ Drafting supports all four journeys, while search/comparison are the pilot and c
 
 **Resolve by**: Specify which journeys may be authored, reviewed, approved, mapped, and executed during each phase.
 
+**Proposed resolution (pending product-owner and QA-lead sign-off)**: During the initial pilot, only search and comparison cases may be authored, reviewed, approved, mapped, and executed. Configuration and booking are deferred from all pilot lifecycle stages and require a later scope decision; booking also requires its separate Sandbox safety approval.
+
 ### T-04. Confluence read-only default versus no Confluence requirement
 
 **References**: FR-003, FR-029; Assumptions; constitution Principle II.
@@ -288,6 +300,8 @@ Drafting supports all four journeys, while search/comparison are the pilot and c
 The constitution says Confluence is read-only by default, but FR-029 keeps page retrieval and authoring disabled until approval and requirements are defined. This is compatible only if "read-only by default" is a constraint on any future integration, not a feature enabled in this release.
 
 **Resolve by**: Explicitly state that Confluence access is out of scope and disabled for this release; retain read-only as a future minimum-permission rule.
+
+**Proposed resolution (pending product-owner and QA-lead sign-off)**: Confluence access is disabled and out of scope for this release. Any future approved access remains read-only by default and requires separately approved user needs, permitted content, and access scope.
 
 ### T-05. Test isolation versus required PostgreSQL persistence
 
