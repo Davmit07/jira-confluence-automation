@@ -7,6 +7,10 @@
     "jira": {
       "command": "/bin/sh",
       "args": ["${workspaceFolder}/.vscode/start-jira-mcp.sh"]
-    }
+    },
+    "github": { 
+      "type": "http", 
+      "url": "https://api.githubcopilot.com/mcp/"
+    }  
   }
 }
