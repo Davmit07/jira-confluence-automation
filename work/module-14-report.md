@@ -7,9 +7,9 @@ Priorities put environment isolation, production blocking, booking restrictions,
 
 ## Setup
 
-- [ ] Confirm the pilot environments and obtain the canonical base URL for each selected environment from the application owner.
-- [ ] Establish a controlled configuration mechanism for environment names and base URLs; keep credentials in local environment variables or an approved secret manager.
-- [ ] Implement exact-origin URL allowlisting, including scheme, hostname, and permitted port; reject malformed URLs, redirects to unapproved origins, and URLs not explicitly configured.
+- [ ] Confirm the pilot environments and obtain the canonical base URL for each selected environment from the application owner. #1 (Github Coding Agent Module 19)
+- [ ] Establish a controlled configuration mechanism for environment names and base URLs; keep credentials in local environment variables or an approved secret manager. #2
+- [ ] Implement exact-origin URL allowlisting, including scheme, hostname, and permitted port; reject malformed URLs, redirects to unapproved origins, and URLs not explicitly configured. #3
 - [ ] Add a hard production-target denial independent of the allowlist, and verify the denial is applied before browser navigation.
 - [ ] Define booking-case environment policy so booking cases can run only against the approved Sandbox origin even when another environment is selected.
 - [ ] Record the configured Sandbox origin and obtain application-owner confirmation that it is non-production and safe for booking tests.
@@ -99,13 +99,19 @@ Priorities put environment isolation, production blocking, booking restrictions,
 - [ ] Add troubleshooting guidance for Jira permissions, missing acceptance criteria, invalid workbook rows, Chrome/Playwright setup, unavailable environments, and blocked safety checks.
 - [ ] Record pilot exit criteria and QA sign-off before expanding from search/comparison to configuration and Sandbox bookings.
 
-
 ## GitHub Issues
 | Issue URL | Title | Created via MCP? |
-|-----------|-------|------------------|
-| N/A | No issue was created or referenced; repository creation was blocked by the enterprise-managed account policy. | N/A |
+|-----------|-------|-----------------|
+| https://github.com/Davmit07/jira-confluence-automation/issues/1 | Confirm the pilot environments and obtain the canonical base URL for each selected environment from the application owner. | Yes |
+| https://github.com/Davmit07/jira-confluence-automation/issues/2 | Establish a controlled configuration mechanism for environment names and base URLs; keep credentials in local environment variables or an approved secret manager. | Yes |
+| https://github.com/Davmit07/jira-confluence-automation/issues/3 | Implement exact-origin URL allowlisting, including scheme, hostname, and permitted port; reject malformed URLs, redirects to unapproved origins, and URLs not explicitly configured. | Yes |
 
 ## MCP Tools Used
-- mcp_github_mcp_se_get_me
-- mcp_github_mcp_se_search_repositories
-- mcp_github_mcp_se_create_repository
+- github-create_repository
+- github-mcp-server-get_file_contents
+- github-issue_write
+- github-list_issue_types
+- github-issue_read
+- github-list_issues
+- github-get_label
+- github-add_issue_comment
