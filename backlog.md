@@ -4,7 +4,7 @@ Priorities put environment isolation, production blocking, booking restrictions,
 
 ## Setup
 
-- [ ] Confirm the pilot environments and obtain the canonical base URL for each selected environment from the application owner. -1
+- [ ] Confirm the pilot environments and obtain the canonical base URL for each selected environment from the application owner. #1 (Github Coding Agent Module 19)
 - [ ] Establish a controlled configuration mechanism for environment names and base URLs; keep credentials in local environment variables or an approved secret manager. #2
 - [ ] Implement exact-origin URL allowlisting, including scheme, hostname, and permitted port; reject malformed URLs, redirects to unapproved origins, and URLs not explicitly configured. #3
 - [ ] Add a hard production-target denial independent of the allowlist, and verify the denial is applied before browser navigation.
