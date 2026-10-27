@@ -1,36 +1,12 @@
 {
-  "inputs": [
-    {
-      "id": "jira-url",
-      "type": "promptString",
-      "description": "Jira base URL (for example, https://company.atlassian.net)"
-    },
-    {
-      "id": "jira-email",
-      "type": "promptString",
-      "description": "Email address associated with your Jira API token"
-    },
-    {
-      "id": "jira-personal-token",
-      "type": "promptString",
-      "description": "Jira API token",
-      "password": true
-    }
-  ],
   "servers": {
     "echo-macos": {
       "command": "pwsh",
       "args": ["-ExecutionPolicy", "Bypass", "-File", "./path/to/mcp-echo.ps1"]
     },
     "jira": {
-      "command": "uvx",
-      "args": ["mcp-atlassian"],
-      "env": {
-        "JIRA_URL": "${input:jira-url}",
-        "JIRA_EMAIL": "${input:jira-email}",
-        "JIRA_PERSONAL_TOKEN": "${input:jira-personal-token}",
-        "READ_ONLY_MODE": "true"
-      }
+      "command": "/bin/sh",
+      "args": ["${workspaceFolder}/.vscode/start-jira-mcp.sh"]
     }
   }
 }
