@@ -4,9 +4,9 @@ Priorities put environment isolation, production blocking, booking restrictions,
 
 ## Setup
 
-- [ ] Confirm the pilot environments and obtain the canonical base URL for each selected environment from the application owner.
-- [ ] Establish a controlled configuration mechanism for environment names and base URLs; keep credentials in local environment variables or an approved secret manager.
-- [ ] Implement exact-origin URL allowlisting, including scheme, hostname, and permitted port; reject malformed URLs, redirects to unapproved origins, and URLs not explicitly configured.
+- [ ] Confirm the pilot environments and obtain the canonical base URL for each selected environment from the application owner. -1
+- [ ] Establish a controlled configuration mechanism for environment names and base URLs; keep credentials in local environment variables or an approved secret manager. #2
+- [ ] Implement exact-origin URL allowlisting, including scheme, hostname, and permitted port; reject malformed URLs, redirects to unapproved origins, and URLs not explicitly configured. #3
 - [ ] Add a hard production-target denial independent of the allowlist, and verify the denial is applied before browser navigation.
 - [ ] Define booking-case environment policy so booking cases can run only against the approved Sandbox origin even when another environment is selected.
 - [ ] Record the configured Sandbox origin and obtain application-owner confirmation that it is non-production and safe for booking tests.
